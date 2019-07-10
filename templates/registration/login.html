@@ -1,0 +1,45 @@
+{% load static %}
+
+<head>
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <title>LOGIN</title>
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Sign In</h5>
+                        <form class="form-signin">
+                            {% csrf_token %}
+                            <div class="form-label-group">
+                                Usuario: {{form.username}}
+                            </div>
+
+                            <div class="form-label-group">
+                                Senha: {{form.password}}
+                            </div>
+                            <a href="{% url 'password_reset' %}">Esqueceu sua senha?</a>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                            <hr class="my-4">
+                            <a href="{% url 'logout' %}">Sair</a>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
